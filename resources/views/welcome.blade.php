@@ -24,7 +24,7 @@
         }
         
         .wrapper {
-            min-height: 100vh; /* Viewport height */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
@@ -34,14 +34,13 @@
         }
         
         .footer {
-            position: sticky;
-            bottom: 0;
+            margin-top: auto;
             width: 100%;
         }
     </style>
 </head>
-<body class="antialiased bg-gray-100 font-sans">
-    <div class="wrapper">
+<body class="antialiased bg-white font-sans flex flex-col">
+    <div class="wrapper flex flex-col min-h-screen">
         <!-- Navigation -->
         <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
             <div class="text-xl font-bold text-gray-800">
@@ -50,32 +49,62 @@
             <div class="space-x-4">
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 font-medium hover:text-blue-600">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="text-m text-gray-700 font-medium hover:text-blue-600">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 font-medium hover:text-blue-600">Login</a>
+                        <a href="{{ route('login') }}" class="text-m text-gray-700 font-medium hover:text-blue-600">Login</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="text-sm text-gray-700 font-medium bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition">Register</a>
+                            <a href="{{ route('register') }}" class="text-m text-gray-700 font-medium hover:text-blue-600">Register</a>
                         @endif
                     @endauth
                 @endif
             </div>
         </nav>
 
-        <!-- Hero Section -->
-        <main class="content flex items-center justify-center text-center p-6">
-            <div class="max-w-2xl">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                    Selamat Datang di <span class="text-blue-600">CRM PT. Smart</span>
-                </h1>
-                <p class="mt-4 text-lg text-gray-600">
-                    Sistem manajemen relasi pelanggan untuk layanan Internet Service Provider yang lebih profesional dan terorganisir.
-                </p>
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <!-- Hero Section -->
+            <div class="bg-white">
+                <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-12 lg:px-8">
+                    <div class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+                        <svg viewBox="0 0 1024 1024" class="absolute top-1/2 left-1/2 -z-10 size-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0" aria-hidden="true">
+                            <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+                            <defs>
+                                <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+                                    <stop stop-color="#1e40af" />
+                                    <stop offset="1" stop-color="#2563eb" />
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                        <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                            <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
+                                Tingkatkan Efisiensi Operasional ISP Anda
+                            </h2>
+                            <p class="mt-6 text-lg/8 text-pretty text-blue-100">
+                                Solusi CRM terintegrasi untuk mengelola pelanggan, penjualan, dan layanan internet dengan lebih efisien dan paperless.
+                            </p>
+                            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 lg:justify-start">
+                                <a href="{{ route('register') }}" class="rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                    Mulai Sekarang
+                                </a>
+                            </div>
+                        </div>
+                        <div class="relative mt-16 h-80 lg:mt-8 flex items-center justify-center">
+                            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                                <div class="grid grid-cols-2 gap-8">
+                                    <img class="absolute top-12 left-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10" src="{{ asset('img/image.png') }}" width="1824" height="1080">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
 
         <!-- Footer -->
-        <footer class="footer text-center text-gray-500 text-sm py-4 bg-white shadow-inner">
-            &copy; {{ date('Y') }} PT. Smart. All rights reserved.
+        <footer class="footer bg-white shadow-inner py-4">
+            <div class="text-center text-gray-500 text-sm">
+                &copy; {{ date('Y') }} PT. Smart. All rights reserved.
+            </div>
         </footer>
     </div>
 </body>
