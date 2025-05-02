@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\LeadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,9 +20,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 });
 
-Route::get('/lead', function () {
-    return view('lead.index');
-})->middleware(['auth', 'verified'])->name('lead');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/lead', [LeadController::class, 'index'])->name('lead');
+    Route::post('/lead', [LeadController::class, 'store'])->name('lead.store');
+    Route::put('/lead/{id}', [LeadController::class, 'update'])->name('lead.update');
+    Route::delete('/lead/{id}', [LeadController::class, 'destroy'])->name('lead.destroy');
+});
 
 Route::get('/proyek', function () {
     return view('proyek.index');
