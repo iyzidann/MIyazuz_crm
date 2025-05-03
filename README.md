@@ -41,10 +41,6 @@ Ikuti langkah-langkah berikut untuk menyiapkan proyek secara lokal.
 ### Instalasi
 
 1. Clone repositori
-   ```sh
-   git clone https://your-repository-url.git
-   cd isp-sales-management
-   ```
 
 2. Install dependensi PHP
    ```sh
