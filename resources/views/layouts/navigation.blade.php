@@ -17,29 +17,40 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('produk')" :active="request()->routeIs('produk')">
-                        {{ __('Product') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('lead')" :active="request()->routeIs('lead')">
-                        {{ __('Lead') }}
-                    </x-nav-link>
-                </div>
-
+                <!-- Project link - visible to both roles -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('proyek')" :active="request()->routeIs('proyek')">
                         {{ __('Project') }}
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('customer')" :active="request()->routeIs('customer')">
-                        {{ __('Customer') }}
-                    </x-nav-link>
-                </div>
+                @if(auth()->user()->role === 'manager')
+                    <!-- Manager-only links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
+                            {{ __('User') }}
+                        </x-nav-link>
+                    </div>
+                @else
+                    <!-- Sales-only links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('produk')" :active="request()->routeIs('produk')">
+                            {{ __('Product') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('lead')" :active="request()->routeIs('lead')">
+                            {{ __('Lead') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('customer')" :active="request()->routeIs('customer')">
+                            {{ __('Customer') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -94,6 +105,31 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <!-- Project link - visible to both roles -->
+            <x-responsive-nav-link :href="route('proyek')" :active="request()->routeIs('proyek')">
+                {{ __('Project') }}
+            </x-responsive-nav-link>
+
+            @if(auth()->user()->role === 'manager')
+                <!-- Manager-only links -->
+                <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
+                    {{ __('User') }}
+                </x-responsive-nav-link>
+            @else
+                <!-- Sales-only links -->
+                <x-responsive-nav-link :href="route('produk')" :active="request()->routeIs('produk')">
+                    {{ __('Product') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('lead')" :active="request()->routeIs('lead')">
+                    {{ __('Lead') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('customer')" :active="request()->routeIs('customer')">
+                    {{ __('Customer') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

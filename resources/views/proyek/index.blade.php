@@ -20,9 +20,11 @@
                         {{ __("Tabel Data Project") }}
                     </div>
                     <div>
-                        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700">
-                            Tambah Project
-                        </button>
+                        @if(auth()->user()->role === 'sales')
+                            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700">
+                                Tambah Project
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -129,6 +131,7 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="flex space-x-2">
+                                            @if(auth()->user()->role === 'manager')
                                             <!-- Detail button for approval -->
                                             <button
                                                 type="button"
@@ -137,21 +140,24 @@
                                                 data-modal-target="detail-project-modal" data-modal-toggle="detail-project-modal">
                                                 Detail
                                             </button>
+                                            @endif
                                             
-                                            <button
-                                                type="button"
-                                                class="px-3 py-1.5 text-xs font-medium text-center text-gray-800 bg-yellow-300 rounded-lg hover:bg-yellow-400"
-                                                onclick="openEditModal({{ $project->id }}, '{{ $project->lead_id }}', '{{ $project->produk_id }}', '{{ $project->status }}')"
-                                                data-modal-target="edit-project-modal" data-modal-toggle="edit-project-modal">
-                                                Edit
-                                            </button>
-                                            
-                                            <button type="button"
-                                                onclick="confirmDelete('{{ route('proyek.destroy', $project->id) }}')"
-                                                data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                                class="px-2 py-1.5 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800">
-                                                Hapus
-                                            </button>
+                                            @if(auth()->user()->role === 'sales')
+                                                <button
+                                                    type="button"
+                                                    class="px-3 py-1.5 text-xs font-medium text-center text-gray-800 bg-yellow-300 rounded-lg hover:bg-yellow-400"
+                                                    onclick="openEditModal({{ $project->id }}, '{{ $project->lead_id }}', '{{ $project->produk_id }}', '{{ $project->status }}')"
+                                                    data-modal-target="edit-project-modal" data-modal-toggle="edit-project-modal">
+                                                    Edit
+                                                </button>
+                                                
+                                                <button type="button"
+                                                    onclick="confirmDelete('{{ route('proyek.destroy', $project->id) }}')"
+                                                    data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                                    class="px-2 py-1.5 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800">
+                                                    Hapus
+                                                </button>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
@@ -286,11 +292,9 @@
                                 @endforeach
                             </select>
                         </div>
-                
-                        <!-- Status (hidden dengan nilai yang sama) -->
+
                         <input type="hidden" name="status" id="edit_status_hidden">
                         
-                        <!-- Tampilkan status (readonly) untuk non-manager -->
                         <div class="col-span-2">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                             <div class="px-3 py-2 text-sm bg-gray-100 rounded-lg">
@@ -364,12 +368,9 @@
             const approveForm = document.getElementById('approve-form');
             const rejectForm = document.getElementById('reject-form');
             
-            // Use the correct route for approval
             const baseUrl = "{{ url('/') }}";
             approveForm.action = baseUrl + "/proyek/" + projectId + "/approval";
             rejectForm.action = baseUrl + "/proyek/" + projectId + "/approval";
-            
-            // Rest of your existing code...
             document.getElementById('lead_nama_detail').textContent = leadNama;
             document.getElementById('lead_email_detail').textContent = leadEmail;
             document.getElementById('lead_alamat_detail').textContent = leadAlamat;
