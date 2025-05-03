@@ -2,7 +2,7 @@
 
 ## Tentang Proyek
 
-Sistem Manajemen Penjualan ISP adalah aplikasi web yang dibangun dengan Laravel 11 untuk membantu perusahaan Internet Service Provider mengelola operasi penjualan mereka secara efisien. Sistem ini memiliki dua peran utama - Sales (Penjual) dan Manager - yang memungkinkan proses penjualan, manajemen pelanggan, dan pelacakan kinerja berjalan dengan lancar.
+Sistem Manajemen Hubungan Pelanggan ISP adalah aplikasi web yang dibangun dengan Laravel 11 untuk membantu perusahaan Internet Service Provider mengelola hubungan pelanggan.
 
 ### Waktu Pengerjaan
 - Mulai: 30 April 2025, pukul 18:15 WIB
@@ -114,11 +114,10 @@ Proyek ini mengikuti struktur direktori Laravel 11 standar dengan beberapa direk
 Aplikasi ini menggunakan PostgreSQL dengan tabel utama berikut:
 
 - `users` - Menyimpan informasi pengguna
-- `roles` - Mendefinisikan peran pengguna (sales, manager)
-- `leads` - Menyimpan data calon pelanggan
-- `customers` - Menyimpan informasi pelanggan
-- `projects` - Mencatat proyek-proyek
-- `products` - Daftar paket layanan yang tersedia
+- `lead` - Menyimpan data calon pelanggan
+- `customer` - Menyimpan informasi pelanggan
+- `project` - Mencatat proyek-proyek
+- `product` - Daftar paket layanan yang tersedia
 
 ## Kontribusi
 
