@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ProyekController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,13 +29,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/lead/{id}', [LeadController::class, 'destroy'])->name('lead.destroy');
 });
 
-Route::get('/proyek', function () {
-    return view('proyek.index');
-})->middleware(['auth', 'verified'])->name('proyek');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/proyek', [ProyekController::class, 'index'])->name('proyek');
+    Route::get('/proyek/create', [ProyekController::class, 'create'])->name('proyek.create');
+    Route::post('/proyek', [ProyekController::class, 'store'])->name('proyek.store');
+    Route::put('/proyek/{id}', [ProyekController::class, 'update'])->name('proyek.update');
+    Route::delete('/proyek/{id}', [ProyekController::class, 'destroy'])->name('proyek.destroy');
+    Route::put('/proyek/{proyek}/approval', [ProyekController::class, 'approval'])->name('proyek.approval');
+});
 
-Route::get('/customer', function () {
-    return view('customer.index');
-})->middleware(['auth', 'verified'])->name('customer');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+    Route::delete('/customer/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

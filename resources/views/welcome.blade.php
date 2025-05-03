@@ -52,9 +52,6 @@
                         <a href="{{ url('/dashboard') }}" class="text-m text-gray-700 font-medium hover:text-blue-600">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="text-m text-gray-700 font-medium hover:text-blue-600">Login</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="text-m text-gray-700 font-medium hover:text-blue-600">Register</a>
-                        @endif
                     @endauth
                 @endif
             </div>
@@ -83,7 +80,7 @@
                                 Solusi CRM terintegrasi untuk mengelola pelanggan, penjualan, dan layanan internet dengan lebih efisien dan paperless.
                             </p>
                             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 lg:justify-start">
-                                <a href="{{ route('register') }}" class="rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                                <a href="{{ route('login') }}" class="rounded-md bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                                     Mulai Sekarang
                                 </a>
                             </div>
