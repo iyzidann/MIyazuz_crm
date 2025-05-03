@@ -119,14 +119,6 @@ Aplikasi ini menggunakan PostgreSQL dengan tabel utama berikut:
 - `project` - Mencatat proyek-proyek
 - `product` - Daftar paket layanan yang tersedia
 
-## Kontribusi
-
-Silakan baca [CONTRIBUTING.md](CONTRIBUTING.md) untuk detail tentang kode etik kami dan proses untuk mengirimkan pull request.
-
-## Lisensi
-
-Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE.md](LICENSE.md) untuk detail.
-
 ## Pengakuan
 
 * [Laravel](https://laravel.com)
