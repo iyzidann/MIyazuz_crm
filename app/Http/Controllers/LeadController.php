@@ -9,7 +9,7 @@ class LeadController extends Controller
 {
     public function index()
     {   
-        $leads = Lead::paginate(5);
+        $leads = Lead::with('proyek')->paginate(5);
         return view('lead.index', compact('leads'));
     }
 

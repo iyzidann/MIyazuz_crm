@@ -19,4 +19,9 @@ class Lead extends Model
     ];
 
     public $timestamps = true;
+
+    public function proyek()
+    {
+        return $this->hasOne(Proyek::class, 'lead_id');
+    }
 }

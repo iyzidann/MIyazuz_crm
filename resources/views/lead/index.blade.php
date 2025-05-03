@@ -110,6 +110,18 @@
                                                 'won' => 'bg-green-100 text-green-800',
                                                 'lost' => 'bg-red-100 text-red-800',
                                             ];
+                                            
+                                            // Tentukan status yang akan ditampilkan
+                                            $displayStatus = $lead->status;
+                                            if ($lead->proyek) {
+                                                if ($lead->proyek->status === 'pending') {
+                                                    $displayStatus = 'negotiation';
+                                                } elseif ($lead->proyek->status === 'accepted') {
+                                                    $displayStatus = 'won';
+                                                } elseif ($lead->proyek->status === 'rejected') {
+                                                    $displayStatus = 'lost';
+                                                }
+                                            }
                                         @endphp
                                         <span class="px-2 py-1 text-xs font-semibold rounded {{ $statusColors[$lead->status] ?? 'bg-gray-100 text-gray-800' }}">
                                             {{ ucfirst($lead->status) }}
