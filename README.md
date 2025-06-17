@@ -4,12 +4,7 @@
 
 Sistem Manajemen Hubungan Pelanggan ISP adalah aplikasi web yang dibangun dengan Laravel 11 untuk membantu perusahaan Internet Service Provider mengelola hubungan pelanggan.
 
-### Waktu Pengerjaan
-- Mulai: 30 April 2025, pukul 18:15 WIB
-- Selesai: 3 Mei 2025, pukul 11:00 WIB
-
 ### Dibangun Dengan
-
 * [Laravel 11](https://laravel.com)
 * [PostgreSQL](https://www.postgresql.org/)
 * [Tailwind CSS](https://tailwindcss.com)
