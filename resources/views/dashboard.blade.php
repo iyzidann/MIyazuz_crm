@@ -15,6 +15,30 @@
                     </span>
                 </div>
             </div>
+
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6">
+                    <h3 class="text-lg font-medium text-gray-700 mb-4">Statistik</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-blue-600">{{ $leadCount }}</p>
+                            <p class="text-sm text-gray-500">Calon Customer</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-purple-600">{{ $customerCount }}</p>
+                            <p class="text-sm text-gray-500">Customer</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-green-600">{{ $proyekCount }}</p>
+                            <p class="text-sm text-gray-500">Total Proyek</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-red-600">{{ $produkCount }}</p>
+                            <p class="text-sm text-gray-500">Total Produk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
